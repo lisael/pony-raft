@@ -1,13 +1,15 @@
 BUILD_DIR=build
+PONYC=ponyc
+PONY_SRC=$(wildcard **/*.pony) $(wildcard *.pony)
 BIN=$(BUILD_DIR)/$(shell basename `pwd` )
 
-all: clean $(BUILD_DIR) $(BIN)
+all: $(BUILD_DIR) $(BIN)
 
 $(BUILD_DIR):
 	mkdir -p $(BUILD_DIR)
 
-$(BIN):
-	ponyc -o $(BUILD_DIR)
+$(BIN): $(PONY_SRC)
+	$(PONYC) -o $(BUILD_DIR)
 
 clean:
 	-rm -rf $(BUILD_DIR)
