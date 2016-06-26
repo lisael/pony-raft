@@ -1,15 +1,15 @@
 use "collections"
 
-class _KVStore
+actor _KVStore
   var _data: Map[String, I64] = Map[String, I64]
 
-  fun ref set(key: String, value: I64): (I64 | None) =>
+  be set(key: String, value: I64) =>
     _data.update(key, value)
       
-  fun get(key: String): (I64 | None)=>
+  be get(key: String) =>
     try _data(key) else None end
 
-  fun ref delete(key: String): (I64 | None)=>
+  be delete(key: String) =>
     try
       (_, let v: I64) = _data.remove(key)
       v
