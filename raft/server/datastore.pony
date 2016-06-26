@@ -1,13 +1,18 @@
 use "collections"
 
 class _KVStore
-  var _data: Map[String, I64] iso = recover iso Map[String, I64] end
+  var _data: Map[String, I64] = Map[String, I64]
 
-  fun iso set(key: String, value: I64) =>
+  fun ref set(key: String, value: I64): (I64 | None) =>
     _data.update(key, value)
       
-  fun iso delete(key: String) =>
-    try _data.remove(key) else I64(0) end
+  fun get(key: String): (I64 | None)=>
+    try _data(key) else None end
 
-  fun iso get(key: String) =>
-    try _data(key) else 0 end
+  fun ref delete(key: String): (I64 | None)=>
+    try
+      (_, let v: I64) = _data.remove(key)
+      v
+    else
+      None
+    end
