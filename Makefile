@@ -1,7 +1,7 @@
 PKG=raft
 BUILD_DIR=build
 PONYC=ponyc
-PONY_SRC=$(wildcard **/*.pony)
+PONY_SRC=$(wildcard **/*.pony) $(wildcard **/**/*.pony)
 BIN=$(BUILD_DIR)/$(PKG)
 TEST_BIN=$(BUILD_DIR)/test
 
