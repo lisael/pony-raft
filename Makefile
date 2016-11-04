@@ -19,7 +19,7 @@ $(BUILD_DIR):
 	mkdir -p $(BUILD_DIR)
 
 $(BIN): $(PONY_SRC) 
-	$(PONYC) -o $(BUILD_DIR) $(PKG)
+	$(PONYC) -p . -o $(BUILD_DIR) $(PKG)
 
 doc: $(PONY_SRC) 
 	$(PONYC) -o $(BUILD_DIR) --docs --path . --pass=docs $(PKG)

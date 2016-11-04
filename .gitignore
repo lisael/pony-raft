@@ -1,0 +1,3 @@
+*.sw[p|o|m|n]
+wiki/
+build/
